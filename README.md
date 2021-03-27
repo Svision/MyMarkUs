@@ -15,7 +15,7 @@ gcc -o mm main.c
 After generated MyMarkUs.html, open it in your broser and save it for later use. You can add favicon.ico in the generated folder to enable great favicon.
 
 ## Sample Usage
-```sh
+```
 $ ./mm
 Where do you want to store the output data?
 Press ENTER to set to current directory OR provide the directory path.
