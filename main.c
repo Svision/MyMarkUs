@@ -91,7 +91,7 @@ void write_html_footer(FILE *courses) {
 void write_html(FILE *courses, int *codes, int size) {
     write_html_header(courses);
     // write_html_body
-    printf("size: %d\n", size);
+    printf("Loaded %d courses!\n", size);
     for (int i = 0; i < size; i++){
         char code_str[4];
         sprintf(code_str, "%d", codes[i]);
@@ -176,12 +176,12 @@ int main(int argc, char*argv[]) {
     // Read data
     printf("Loading data...\n");
     FILE *courses = fopen("courses.txt", "r");
-    int courses_code[10];
-    char course_code[4];
+    int courses_codes[10];
+    char* line = NULL;
+    size_t len = 0;
     int i = 0;
-    while (fgets(course_code, sizeof(course_code), courses)) {
-        course_code[3] = '\n';
-        courses_code[i] = strtol(course_code, NULL, 10);
+    while (getline(&line, &len, courses) != -1) {
+        courses_codes[i] = strtol(line, NULL, 10);
         i++;
     }
     fclose(courses);
@@ -189,7 +189,7 @@ int main(int argc, char*argv[]) {
     printf("Creating MyMarkus...\n");
     FILE *my_markus;
     my_markus = fopen("MyMarkus.html", "w");
-    write_html(my_markus, courses_code, i+1);
+    write_html(my_markus, courses_codes, i);
     fclose(my_markus);
     printf("MyMarkus Generated, please open it and save/bookmark it. Thank you!\n");
     return 0;
