@@ -5,7 +5,7 @@ Personalize UofT MarkUs instance
 This program helps you to personalize your MarkUs page. So there are only YOUR courses can be displayed here.
 
 ## Example
-<img src="./markus_assets/example.png" width="400"/>
+<img src="./example.png" width="400"/>
 
 ## Build
 ```sh
